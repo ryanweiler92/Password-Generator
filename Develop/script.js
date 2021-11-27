@@ -15,3 +15,10 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+function start() {
+  window.alert("Welcome to Password Generator, please click OK to continue!");
+  window.alert("Please answer the following questions to generate a password. Click OK to continue.")
+}
+
+start();
