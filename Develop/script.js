@@ -33,23 +33,28 @@ var promptLength = window.prompt("How many characters would you like your passwo
   } 
 };
 
-var lowercaseQuestion = function() {
-  var confirmLowercase = window.confirm("Would you like your password to include lowercase characters?");
-  if (confirmLowercase) {
-    window.alert("You have chosen to include lowercase characters in your password.")
-  } else {
-    window.alert("You have chosen to not include uppercase characters in your password.")
-  }
-};
+var caseQuestion = function() {
 
-var uppercaseQuestion = function() {
-  var confirmUppercase = window.confirm("Would you like your password to include uppcase characters?");
-  if (confirmUppercase) {
-    window.alert("You have chosen to include uppercase characters in your password.")
-  } else {
-    window.alert("You have chosen to not include uppercase characters in your password.")
+  var casePrompt = window.prompt("Which character case would you like in your password? Enter 1 for lowercase, 2 for uppercase or 3 for both.");
+
+  casePrompt = parseInt(casePrompt);
+
+  switch (casePrompt) {
+    case 1:
+      window.alert("You have chosen lowercase characters.");
+      break;
+    case 2: 
+      window.alert("You have chosen uppercase characters.");
+      break;
+    case 3:
+      window.alert("You have chosen both upper and lowercase characters.");
+      break;
+    default:
+      window.alert("You did not pick a valid option. Please try again.");
+      caseQuestion();
+      break;
   }
-};
+}
 
 var numericQuestion = function() {
   var confirmNumeric = window.confirm("Would you like your password to include numeric characters?");
@@ -76,8 +81,7 @@ var start = function() {
   window.alert("Please answer the following questions to generate a password. Click OK to continue.");
   //ask user how long they would like their password to be
   lengthQuestion();
-  lowercaseQuestion();
-  uppercaseQuestion();
+  caseQuestion();
   numericQuestion();
   specialCharactersQuestion();
 }
