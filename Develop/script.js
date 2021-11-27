@@ -2,25 +2,14 @@
 
 
 // Get references to the #generate element
-var generateBtn = document.querySelector("#generate");
 
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
-}
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
 
 var numbers = /^[0-9]+$/
 
 //function that asks the user for the length of their password
 var lengthQuestion = function() {
 var promptLength = window.prompt("How many characters would you like your password to be? Passwords can be between 8 and 128 characters.");
+  promptLength = parseInt(promptLength);
   //validate prompt answer
   if (promptLength < 8 ) {
     window.alert("Your password is too short! Please choose a length of at least 8 characters!");
@@ -30,7 +19,10 @@ var promptLength = window.prompt("How many characters would you like your passwo
     window.alert("Your password is too long! Please choose a length of less than 129 characters!");
     //returned back to length question
     return lengthQuestion();
-  } 
+  } else {
+    console.log(promptLength);
+    return promptLength;
+  }
 };
 
 var caseQuestion = function() {
@@ -42,12 +34,15 @@ var caseQuestion = function() {
   switch (casePrompt) {
     case 1:
       window.alert("You have chosen lowercase characters.");
+      console.log(casePrompt);
       break;
     case 2: 
       window.alert("You have chosen uppercase characters.");
+      console.log(casePrompt);
       break;
     case 3:
       window.alert("You have chosen both upper and lowercase characters.");
+      console.log(casePrompt);
       break;
     default:
       window.alert("You did not pick a valid option. Please try again.");
@@ -59,10 +54,13 @@ var caseQuestion = function() {
 var numericQuestion = function() {
   var confirmNumeric = window.confirm("Would you like your password to include numeric characters?");
   if (confirmNumeric) {
-
     window.confirm("You have chosen to include numeric characters in your password.")
+    console.log(confirmNumeric);
+    return true;
 } else {
   window.alert("You have chosen to not include numeric characters in your password.")
+  console.log(confirmNumeric);
+  return false;
 }
 };
 
@@ -70,23 +68,58 @@ var specialCharactersQuestion = function() {
   var confirmSpecialCharacter = window.confirm("Would you like your password to include special characters?");
   if (confirmSpecialCharacter) {
     window.alert("You have chosen to include special characters in your password.")
+    console.log(confirmSpecialCharacter);
+    return true;
   } else {
-    window.alert("You have chosen to not include special characters in your password.")
+    window.alert("You have chosen to not include special characters in your password.");
+    console.log(confirmSpecialCharacter);
+    return false;
   }
 };
 
-var start = function() {
-  //welcome and explain process to user
-  window.alert("Welcome to Password Generator, please click OK to continue!");
-  window.alert("Please answer the following questions to generate a password. Click OK to continue.");
-  //ask user how long they would like their password to be
-  lengthQuestion();
-  caseQuestion();
-  numericQuestion();
-  specialCharactersQuestion();
+
+
+
+var randomNumber = function(min, max) {
+  var value = Math.floor(Math.random() * (max - min) + min);
+
+  return value;
+};
+
+
+var generateBtn = document.querySelector("#generate");
+
+// Write password to the #password input
+
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
+
+
+function writePassword() {
+ 
+    window.alert("Welcome to Password Generator, please click OK to continue!");
+    window.alert("Please answer the following questions to generate a password. Click OK to continue.");
+    //ask user how long they would like their password to be
+    lengthQuestion();
+    caseQuestion();
+    numericQuestion();
+    specialCharactersQuestion();
+
+
+ //var password = generatePassword();
+ var passwordText = document.querySelector("#password");
+ passwordText.innerHTML = "test12345";
+ 
+ //console.log(lengthQuestion.value);
+ //console.log(lengthQuestion);
+ //console.log(lengthPrompt.value);
+ //console.log(lengthPrompt);
+
 }
 
-start();
+
+writePassword();
 
 
 
