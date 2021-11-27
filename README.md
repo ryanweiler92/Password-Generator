@@ -11,7 +11,7 @@ between 8 and 128. The characters can include lowercase, uppercase, numeric and 
 https://ryanweiler92.github.io/Password-Generator/
 
 ## Screenshot
-![Password-Generator-Screenshot](assets/images/generator-screenshot.jpg)
+![Password-Generator-Screenshot](./assets/images/generator-screenshot.jpg)
 
 ## Contribution
 Made by [Ryan Weiler]
