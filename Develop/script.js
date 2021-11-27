@@ -183,7 +183,7 @@ function writePassword() {
  var passwordText = document.querySelector("#password");
  passwordText.innerHTML = generateString(passwordInfo.length);
  
-;}
+};
 
 var passwordInfo = {
   length: 0,
