@@ -1,4 +1,17 @@
-var numbers = /^[0-9]+$/
+var uppercaseList = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+var uppercaseNumList ='ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789';
+var uppercaseWithSpecialList ="ABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+var uppercaseWithNumSpecialList="ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+var lowercaseList = "abcdefghijklmnopqrstuvwxyz";
+var lowercaseNumList="abcdefghijklmnopqrstuvwxyz0123456789";
+var lowercaseSpecialList="abcdefghijklmnopqrstuvwxyz!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+var lowercaseNumSpecialList="abcdefghijklmnopqrstuvwxyz0123456789!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+var bothCaseList = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+var bothCaseNumList = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+var bothCaseSpecialList = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+var bothCaseNumSpecialList = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+
+
 var password = "tEsTiNg123!!"
 //function that asks the user for the length of their password
 
@@ -101,6 +114,28 @@ var generateBtn = document.querySelector("#generate");
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
+function generateString(length) {
+  let result = " ";
+  if (passwordInfo.case = 3 && passwordInfo.numeric === false && passwordInfo.special === false) {
+  const bothCaseListLength = bothCaseList.length;
+  for (let i = 0; i < length; i ++) {
+    result +=bothCaseList.charAt(Math.floor(Math.random() * bothCaseListLength));
+  }
+  return result
+} else if (passwordInfo.case = 2 && passwordInfo.numeric === false && passwordInfo.special === false) {
+  const bothCaseListLength = bothCaseList.length;
+  for (let i = 0; i < length; i ++) {
+    result +=bothCaseList.charAt(Math.floor(Math.random() * bothCaseListLength));
+  }
+  return result.toUpperCase();
+} else if (passwordInfo.case = 1 && passwordInfo.numeric === false && passwordInfo.special === false) {
+  const bothCaseListLength = bothCaseList.length;
+  for (let i = 0; i < length; i ++) {
+    result +=bothCaseList.charAt(Math.floor(Math.random() * bothCaseListLength));
+  }
+  return result.toLowerCase();
+}
+}
 
 function writePassword() {
  
@@ -116,7 +151,7 @@ function writePassword() {
 
  //var password = generatePassword();
  var passwordText = document.querySelector("#password");
- passwordText.innerHTML = password;
+ passwordText.innerHTML = generateString(passwordInfo.length);
  
  //console.log(lengthQuestion.value);
  //console.log(lengthQuestion);
