@@ -16,12 +16,15 @@ var promptLength = window.prompt("How many characters would you like your passwo
   } else if (promptLength > 128 ) {
     window.alert("Your password is too long! Please choose a length of less than 129 characters!");
     return lengthQuestion();
-  } else {
+  } else if (promptLength > 7 && promptLength < 129) {
     console.log(promptLength);
     passwordInfo.length = promptLength;
     return promptLength;
+  } else {
+    window.alert("Please enter a numeric value!");
+    return lengthQuestion();
   }
-};
+  }
 
 var caseQuestion = function() {
 
